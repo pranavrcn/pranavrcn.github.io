@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #e0e0e0; /* Light grey background */
+            color: #333333; /* Dark grey text */
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .container {
+            margin-top: 50px;
+        }
+
+        .card {
+            border: none; /* Remove border */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for differentiation */
+            background-color: #f8f9fa; /* Light background for better readability */
+            position: relative; /* Needed for absolute positioning of the date */
+            transition: transform 0.3s, box-shadow 0.3s; /* Transition for hover effects */
+        }
+
+        .card:hover {
+            transform: translateY(-10px); /* Hover effect to lift the card */
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+        }
+
+        .card .card-title {
+            color: #333333; /* Dark grey text for titles */
+        }
+
+        .card .card-date {
+            font-size: 0.7rem; /* Smaller font size for dates */
+            color: #777777; /* Lighter grey color for dates */
+            position: absolute; /* Absolute positioning */
+            top: 10px; /* Positioning from top */
+            right: 10px; /* Positioning from right */
+        }
+
+        .card .card-badges {
+            margin-top: 10px; /* Adjust margin for spacing */
+        }
+
+        .card .badge {
+            margin-right: 5px; /* Space between badges */
+        }
+
+        .card .card-text {
+            color: #555555; /* Medium grey text for readability */
+        }
+
+        .btn-outline-secondary {
+            color: #6c757d; /* Secondary grey color for buttons */
+            border-color: #6c757d; /* Secondary grey border for buttons */
+        }
+
+        .btn-outline-secondary:hover {
+            color: #ffffff; /* White text on hover */
+            background-color: #6c757d; /* Secondary grey background on hover */
+            border-color: #6c757d; /* Secondary grey border on hover */
+        }
+
+        .text-secondary {
+            color: #6c757d !important; /* Secondary grey text for headings */
+        }
+
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            .card .card-date {
+                font-size: 0.6rem; /* Adjust font size for smaller screens */
+                top: 5px; /* Adjust positioning for smaller screens */
+                right: 5px; /* Adjust positioning for smaller screens */
+            }
+
+            .card .card-title {
+                font-size: 1.2rem; /* Adjust title size for smaller screens */
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container my-5">
+        <h1 class="display-4 text-center text-secondary">My Projects</h1>
+        <div class="row mt-4">
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card bg-light text-dark shadow">
+                    <div class="card-body">
+                        <p class="card-date"><em>January 2023 - March 2023</em></p>
+                        <h5 class="card-title">Project Title 1</h5>
+                        <p class="card-badges mb-2">
+                            <span class="badge badge-primary">HTML</span>
+                            <span class="badge badge-success">CSS</span>
+                            <span class="badge badge-warning">JavaScript</span>
+                        </p>
+                        <p class="card-text">Description of the project goes here.</p>
+                        <a href="https://github.com/your-repo/project1" class="btn btn-outline-secondary">View Repository</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card bg-light text-dark shadow">
+                    <div class="card-body">
+                        <p class="card-date"><em>April 2023 - June 2023</em></p>
+                        <h5 class="card-title">Project Title 2</h5>
+                        <p class="card-badges mb-2">
+                            <span class="badge badge-info">Python</span>
+                            <span class="badge badge-dark">Flask</span>
+                            <span class="badge badge-secondary">SQL</span>
+                            <span class="badge badge-primary">Docker</span>
+                            <span class="badge badge-success">+3 more</span>
+                        </p>
+                        <p class="card-text">Description of the project goes here.</p>
+                        <a href="https://github.com/your-repo/project2" class="btn btn-outline-secondary">View Repository</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6 mb-4">
+                <div class="card bg-light text-dark shadow">
+                    <div class="card-body">
+                        <p class="card-date"><em>July 2023 - September 2023</em></p>
+                        <h5 class="card-title">Project Title 3</h5>
+                        <p class="card-badges mb-2">
+                            <span class="badge badge-primary">React</span>
+                            <span class="badge badge-success">Node.js</span>
+                            <span class="badge badge-warning">MongoDB</span>
+                        </p>
+                        <p class="card-text">Description of the project goes here.</p>
+                        <a href="https://github.com/your-repo/project3" class="btn btn-outline-secondary">View Repository</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        // Smooth scroll effect for better navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
