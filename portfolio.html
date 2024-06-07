@@ -9,130 +9,220 @@
     <link rel="stylesheet" href="styles.css">
     <style>
         body {
-            background-color: #e0e0e0; /* Light grey background */
-            color: #333333; /* Dark grey text */
+            background-color: #e0e0e0; 
+            color: #333333; 
             font-family: 'Roboto', sans-serif;
+            margin: 0;
+            overflow-x: hidden;
         }
 
-        .container {
-            margin-top: 50px;
+        .left-block {
+            background-color: white;
+            padding: 20px;
+            height: 100vh;
+            width: 33.33%;
+            position: fixed;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+
+        .left-block img {
+            border-radius: 50%;
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+
+        .left-block h2, .left-block h4, .left-block p {
+            margin-bottom: 10px;
+        }
+
+        .left-block .about {
+            margin-top: 20px;
+        }
+
+        .main-content {
+            margin-left: 33.33%;
+            padding: 20px;
+            max-width: 100%; 
+            box-sizing: border-box; 
         }
 
         .card {
-            border: none; /* Remove border */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Add shadow for differentiation */
-            background-color: #f8f9fa; /* Light background for better readability */
-            position: relative; /* Needed for absolute positioning of the date */
-            transition: transform 0.3s, box-shadow 0.3s; /* Transition for hover effects */
+            border: none; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+            background-color: #f8f9fa; 
+            position: relative; 
+            transition: transform 0.3s, box-shadow 0.3s; 
+            height: 100%;
         }
 
         .card:hover {
-            transform: translateY(-10px); /* Hover effect to lift the card */
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); /* Enhance shadow on hover */
+            transform: translateY(-10px); 
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
         }
 
         .card .card-title {
-            color: #333333; /* Dark grey text for titles */
+            color: #333333; 
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
         }
 
         .card .card-date {
-            font-size: 0.7rem; /* Smaller font size for dates */
-            color: #777777; /* Lighter grey color for dates */
-            position: absolute; /* Absolute positioning */
-            top: 10px; /* Positioning from top */
-            right: 10px; /* Positioning from right */
+            font-size: 0.7rem; 
+            color: #777777; 
+            position: absolute; 
+            top: 10px; 
+            right: 10px; 
         }
 
         .card .card-badges {
-            margin-top: 10px; /* Adjust margin for spacing */
+            margin-top: 10px; 
         }
 
         .card .badge {
-            margin-right: 5px; /* Space between badges */
+            margin-right: 5px; 
         }
 
         .card .card-text {
-            color: #555555; /* Medium grey text for readability */
+            color: #555555; 
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 6;
+            overflow: hidden;
+            text-overflow: ellipsis;
         }
 
         .btn-outline-secondary {
-            color: #6c757d; /* Secondary grey color for buttons */
-            border-color: #6c757d; /* Secondary grey border for buttons */
+            color: #6c757d; 
+            border-color: #6c757d; 
         }
 
         .btn-outline-secondary:hover {
-            color: #ffffff; /* White text on hover */
-            background-color: #6c757d; /* Secondary grey background on hover */
-            border-color: #6c757d; /* Secondary grey border on hover */
+            color: #ffffff;
+            background-color: #6c757d; 
+            border-color: #6c757d; 
         }
 
         .text-secondary {
-            color: #6c757d !important; /* Secondary grey text for headings */
+            color: #6c757d !important; 
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+            width: 100%; 
+            box-sizing: border-box; 
         }
 
         /* Media Queries for Responsive Design */
         @media (max-width: 768px) {
+            .left-block {
+                width: 100%;
+                height: auto;
+                position: relative;
+            }
+
+            .main-content {
+                margin-left: 0;
+            }
+
             .card .card-date {
-                font-size: 0.6rem; /* Adjust font size for smaller screens */
-                top: 5px; /* Adjust positioning for smaller screens */
-                right: 5px; /* Adjust positioning for smaller screens */
+                font-size: 0.6rem; 
+                top: 5px; 
+                right: 5px; 
             }
 
             .card .card-title {
-                font-size: 1.2rem; /* Adjust title size for smaller screens */
+                font-size: 1.2rem; 
+            }
+
+            .card .card-text {
+                font-size: 0.875rem; 
+            }
+
+            .card .badge {
+                font-size: 0.75rem;
+            }
+
+            .btn-outline-secondary {
+                padding: 5px 10px; 
+                font-size: 0.875rem; 
             }
         }
     </style>
 </head>
 <body>
-    <div class="container my-5">
-        <h1 class="display-4 text-center text-secondary">My Projects</h1>
-        <div class="row mt-4">
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card bg-light text-dark shadow">
-                    <div class="card-body">
-                        <p class="card-date"><em>January 2023 - March 2023</em></p>
-                        <h5 class="card-title">Project Title 1</h5>
-                        <p class="card-badges mb-2">
-                            <span class="badge badge-primary">HTML</span>
-                            <span class="badge badge-success">CSS</span>
-                            <span class="badge badge-warning">JavaScript</span>
-                        </p>
-                        <p class="card-text">Description of the project goes here.</p>
-                        <a href="https://github.com/your-repo/project1" class="btn btn-outline-secondary">View Repository</a>
-                    </div>
+    <div class="left-block">
+        <img src="headshot.jpg" alt="Headshot">
+        <h2>Pranav Ravichandran</h2>
+        <h4>Applied Statistics at The University of Virginia</h4>
+        <p>Based in Vienna, Virginia</p>
+        <div class="about">
+            <p>About Section: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+        </div>
+    </div>
+    <div class="container main-content">
+        <div class="project-grid mt-6">
+            <div class="card bg-light text-dark shadow">
+                <div class="card-body">
+                    <p class="card-date"><em>January 2024 - May 2024</em></p>
+                    <h5 class="card-title">Refugee-Induced Healthcare Expenditure (Capstone)</h5>
+                    <p class="card-badges mb-2">
+                        <span class="badge badge-primary">R</span>
+                        <span class="badge badge-secondary">Microsoft Excel</span>
+                    </p>
+                    <p class="card-text">Utilized time series forecasting and multiple linear regression modeling to examine refugee movement's impact on healthcare expenditures across various countries. Compiled findings in a detailed report, both technical and non-technical.</p>
+                    <a href="https://github.com/your-repo/refugee-healthcare" class="btn btn-outline-secondary">View Repository</a>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card bg-light text-dark shadow">
-                    <div class="card-body">
-                        <p class="card-date"><em>April 2023 - June 2023</em></p>
-                        <h5 class="card-title">Project Title 2</h5>
-                        <p class="card-badges mb-2">
-                            <span class="badge badge-info">Python</span>
-                            <span class="badge badge-dark">Flask</span>
-                            <span class="badge badge-secondary">SQL</span>
-                            <span class="badge badge-primary">Docker</span>
-                            <span class="badge badge-success">+3 more</span>
-                        </p>
-                        <p class="card-text">Description of the project goes here.</p>
-                        <a href="https://github.com/your-repo/project2" class="btn btn-outline-secondary">View Repository</a>
-                    </div>
+            <div class="card bg-light text-dark shadow">
+                <div class="card-body">
+                    <p class="card-date"><em>January 2024 - May 2024</em></p>
+                    <h5 class="card-title">Financial Risk Analysis Dashboard</h5>
+                    <p class="card-badges mb-2">
+                        <span class="badge badge-info">Power BI</span>
+                        <span class="badge badge-dark">DAX</span>
+                        <span class="badge badge-secondary">Power Query</span>
+                        <span class="badge badge-primary">Python</span>
+                        <span class="badge badge-success">APIs (Alpha Vantage)</span>
+                    </p>
+                    <p class="card-text">Developed an interactive Power BI dashboard to analyze financial risks within investment portfolios. Utilized Alpha Vantage API to integrate real-time and historical data. Implemented financial metrics to assess potential market losses. Enhanced decision-making capabilities through detailed visualizations, showcasing expertise in handling complex datasets.</p>
+                    <a href="https://github.com/your-repo/financial-risk-dashboard" class="btn btn-outline-secondary">View Repository</a>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card bg-light text-dark shadow">
-                    <div class="card-body">
-                        <p class="card-date"><em>July 2023 - September 2023</em></p>
-                        <h5 class="card-title">Project Title 3</h5>
-                        <p class="card-badges mb-2">
-                            <span class="badge badge-primary">React</span>
-                            <span class="badge badge-success">Node.js</span>
-                            <span class="badge badge-warning">MongoDB</span>
-                        </p>
-                        <p class="card-text">Description of the project goes here.</p>
-                        <a href="https://github.com/your-repo/project3" class="btn btn-outline-secondary">View Repository</a>
-                    </div>
+            <div class="card bg-light text-dark shadow">
+                <div class="card-body">
+                    <p class="card-date"><em>September 2023 - December 2023</em></p>
+                    <h5 class="card-title">Credit Delinquency Prediction Model</h5>
+                    <p class="card-badges mb-2">
+                        <span class="badge badge-warning">SAS</span>
+                        <span class="badge badge-secondary">Microsoft Excel</span>
+                    </p>
+                    <p class="card-text">Compiled data from 2008 recession in order to create and cross validate a multiple linear regression model. Predicted areas most at risk to see credit delinquency rates rise during an economic downturn.</p>
+                    <a href="https://github.com/your-repo/credit-delinquency" class="btn btn-outline-secondary">View Repository</a>
+                </div>
+            </div>
+            <div class="card bg-light text-dark shadow">
+                <div class="card-body">
+                    <p class="card-date"><em>December 2023 - Present</em></p>
+                    <h5 class="card-title">CMaps</h5>
+                    <p class="card-badges mb-2">
+                        <span class="badge badge-primary">Django</span>
+                        <span class="badge badge-success">JavaScript</span>
+                        <span class="badge badge-warning">CSS</span>
+                        <span class="badge badge-secondary">HTML</span>
+                        <span class="badge badge-dark">PostgreSQL</span>
+                        <span class="badge badge-info">React Native</span>
+                    </p>
+                    <p class="card-text">Developed and launched a community-driven event management platform alongside a small team. Used version control (ie. GitHub and Git) heavily in order to effectively collaborate on large codebase. Published in the University of Virginia engineering newsletter, and currently has a prospective partnership with a larger company as a campus public event information vendor.</p>
+                    <a href="https://github.com/your-repo/cmaps" class="btn btn-outline-secondary">View Repository</a>
                 </div>
             </div>
         </div>
@@ -141,7 +231,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
     <script>
-        // Smooth scroll effect for better navigation
+
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
