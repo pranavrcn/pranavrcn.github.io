@@ -8,20 +8,22 @@
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="styles.css">
     <style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            overflow-x: hidden;
+        }
+
         body {
             background-color: #e0e0e0; 
             color: #333333; 
             font-family: 'Roboto', sans-serif;
-            margin: 0;
-            overflow-x: hidden;
         }
 
         .left-block {
             background-color: white;
             padding: 20px;
             height: 100vh;
-            width: 33.33%;
-            position: fixed;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -46,18 +48,10 @@
             margin-top: 20px;
         }
 
-        .main-content {
-            margin-left: 33.33%;
-            padding: 20px;
-            max-width: 100%; 
-            box-sizing: border-box; 
-        }
-
         .card {
             border: none; 
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
             background-color: #f8f9fa; 
-            position: relative; 
             transition: transform 0.3s, box-shadow 0.3s; 
             height: 100%;
         }
@@ -113,20 +107,12 @@
             color: #6c757d !important; 
         }
 
-        .project-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            width: 100%; 
-            box-sizing: border-box; 
-        }
-
-        /* Media Queries for Responsive Design */
         @media (max-width: 768px) {
             .left-block {
                 width: 100%;
                 height: auto;
                 position: relative;
+                padding-top: 20px;
             }
 
             .main-content {
@@ -159,70 +145,78 @@
     </style>
 </head>
 <body>
-    <div class="left-block">
-        <img src="headshot.jpg" alt="Headshot">
-        <h2>Pranav Ravichandran</h2>
-        <h4>Applied Statistics at The University of Virginia</h4>
-        <p>Based in Vienna, Virginia</p>
-        <div class="about">
-            <p>About Section: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-        </div>
-    </div>
-    <div class="container main-content">
-        <div class="project-grid mt-6">
-            <div class="card bg-light text-dark shadow">
-                <div class="card-body">
-                    <p class="card-date"><em>January 2024 - May 2024</em></p>
-                    <h5 class="card-title">Refugee-Induced Healthcare Expenditure (Capstone)</h5>
-                    <p class="card-badges mb-2">
-                        <span class="badge badge-primary">R</span>
-                        <span class="badge badge-secondary">Microsoft Excel</span>
-                    </p>
-                    <p class="card-text">Utilized time series forecasting and multiple linear regression modeling to examine refugee movement's impact on healthcare expenditures across various countries. Compiled findings in a detailed report, both technical and non-technical.</p>
-                    <a href="https://github.com/your-repo/refugee-healthcare" class="btn btn-outline-secondary">View Repository</a>
+    <div class="container-fluid h-100">
+        <div class="row h-100">
+            <div class="col-lg-4 col-md-12 left-block">
+                <img src="headshot.jpg" alt="Headshot">
+                <h2>Pranav Ravichandran</h2>
+                <h4>Applied Statistics at The University of Virginia</h4>
+                <p>Based in Vienna, Virginia</p>
+                <div class="about">
+                    <p>About Section: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 </div>
             </div>
-            <div class="card bg-light text-dark shadow">
-                <div class="card-body">
-                    <p class="card-date"><em>January 2024 - May 2024</em></p>
-                    <h5 class="card-title">Financial Risk Analysis Dashboard</h5>
-                    <p class="card-badges mb-2">
-                        <span class="badge badge-info">Power BI</span>
-                        <span class="badge badge-dark">DAX</span>
-                        <span class="badge badge-secondary">Power Query</span>
-                        <span class="badge badge-primary">Python</span>
-                        <span class="badge badge-success">APIs (Alpha Vantage)</span>
-                    </p>
-                    <p class="card-text">Developed an interactive Power BI dashboard to analyze financial risks within investment portfolios. Utilized Alpha Vantage API to integrate real-time and historical data. Implemented financial metrics to assess potential market losses. Enhanced decision-making capabilities through detailed visualizations, showcasing expertise in handling complex datasets.</p>
-                    <a href="https://github.com/your-repo/financial-risk-dashboard" class="btn btn-outline-secondary">View Repository</a>
-                </div>
-            </div>
-            <div class="card bg-light text-dark shadow">
-                <div class="card-body">
-                    <p class="card-date"><em>September 2023 - December 2023</em></p>
-                    <h5 class="card-title">Credit Delinquency Prediction Model</h5>
-                    <p class="card-badges mb-2">
-                        <span class="badge badge-warning">SAS</span>
-                        <span class="badge badge-secondary">Microsoft Excel</span>
-                    </p>
-                    <p class="card-text">Compiled data from 2008 recession in order to create and cross validate a multiple linear regression model. Predicted areas most at risk to see credit delinquency rates rise during an economic downturn.</p>
-                    <a href="https://github.com/your-repo/credit-delinquency" class="btn btn-outline-secondary">View Repository</a>
-                </div>
-            </div>
-            <div class="card bg-light text-dark shadow">
-                <div class="card-body">
-                    <p class="card-date"><em>December 2023 - Present</em></p>
-                    <h5 class="card-title">CMaps</h5>
-                    <p class="card-badges mb-2">
-                        <span class="badge badge-primary">Django</span>
-                        <span class="badge badge-success">JavaScript</span>
-                        <span class="badge badge-warning">CSS</span>
-                        <span class="badge badge-secondary">HTML</span>
-                        <span class="badge badge-dark">PostgreSQL</span>
-                        <span class="badge badge-info">React Native</span>
-                    </p>
-                    <p class="card-text">Developed and launched a community-driven event management platform alongside a small team. Used version control (ie. GitHub and Git) heavily in order to effectively collaborate on large codebase. Published in the University of Virginia engineering newsletter, and currently has a prospective partnership with a larger company as a campus public event information vendor.</p>
-                    <a href="https://github.com/your-repo/cmaps" class="btn btn-outline-secondary">View Repository</a>
+            <div class="col-lg-8 col-md-12 main-content" style = "margin-top: 10px;">
+                <div class="project-grid mt-6 row">
+                    <div class="col-md-6 col-lg-6 mb-4">
+                        <div class="card bg-light text-dark shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">Refugee-Induce6d Healthcare Expenditure (Capstone)</h5>
+                                <p class="card-badges mb-2">
+                                    <span class="badge badge-primary">R</span>
+                                    <span class="badge badge-secondary">Microsoft Excel</span>
+                                </p>
+                                <p class="card-text">Utilized time series forecasting and multiple linear regression modeling to examine refugee movement's impact on healthcare expenditures across various countries. Compiled findings in a detailed report, both technical and non-technical.</p>
+                                <a href="https://github.com/your-repo/refugee-healthcare" class="btn btn-outline-secondary">View Repository</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 mb-4">
+                        <div class="card bg-light text-dark shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">Financial Risk Analysis Dashboard</h5>
+                                <p class="card-badges mb-2">
+                                    <span class="badge badge-info">Power BI</span>
+                                    <span class="badge badge-dark">DAX</span>
+                                    <span class="badge badge-secondary">Power Query</span>
+                                    <span class="badge badge-primary">Python</span>
+                                    <span class="badge badge-success">APIs (Alpha Vantage)</span>
+                                </p>
+                                <p class="card-text">Developed an interactive Power BI dashboard to analyze financial risks within investment portfolios. Utilized Alpha Vantage API to integrate real-time and historical data. Implemented financial metrics to assess potential market losses. Enhanced decision-making capabilities through detailed visualizations, showcasing expertise in handling complex datasets.</p>
+                                <a href="https://github.com/your-repo/financial-risk-dashboard" class="btn btn-outline-secondary">View Repository</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 mb-4">
+                        <div class="card bg-light text-dark shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">Credit Delinquency Prediction Model</h5>
+                                <p class="card-badges mb-2">
+                                    <span class="badge badge-warning">SAS</span>
+                                    <span class="badge badge-secondary">Microsoft Excel</span>
+                                </p>
+                                <p class="card-text">Compiled data from 2008 recession in order to create and cross validate a multiple linear regression model. Predicted areas most at risk to see credit delinquency rates rise during an economic downturn.</p>
+                                <a href="https://github.com/your-repo/credit-delinquency" class="btn btn-outline-secondary">View Repository</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-lg-6 mb-4">
+                        <div class="card bg-light text-dark shadow">
+                            <div class="card-body">
+                                <h5 class="card-title">CMaps</h5>
+                                <p class="card-badges mb-2">
+                                    <span class="badge badge-primary">Django</span>
+                                    <span class="badge badge-success">JavaScript</span>
+                                    <span class="badge badge-warning">CSS</span>
+                                    <span class="badge badge-secondary">HTML</span>
+                                    <span class="badge badge-dark">PostgreSQL</span>
+                                    <span class="badge badge-info">React Native</span>
+                                </p>
+                                <p class="card-text">Developed and launched a community-driven event management platform alongside a small team. Used version control (ie. GitHub and Git) heavily in order to effectively collaborate on large codebase. Published in the University of Virginia engineering newsletter, and currently has a prospective partnership with a larger company as a campus public event information vendor.</p>
+                                <a href="https://github.com/your-repo/cmaps" class="btn btn-outline-secondary">View Repository</a>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -230,16 +224,5 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
-
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
-            });
-        });
-    </script>
 </body>
 </html>
