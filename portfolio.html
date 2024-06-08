@@ -11,7 +11,7 @@
         html, body {
             height: 100%;
             margin: 0;
-            overflow: hidden; /* Prevent scrolling on the entire webpage */
+            overflow: hidden; 
         }
 
         body {
@@ -30,7 +30,7 @@
             justify-content: center;
             text-align: center;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            position: sticky; /* Make left block sticky */
+            position: sticky; 
             top: 0;
         }
 
@@ -89,23 +89,23 @@
             flex: 1 1 auto;
             display: -webkit-box;
             -webkit-box-orient: vertical;
-            -webkit-line-clamp: 6; /* Cap the card description to six lines */
+            -webkit-line-clamp: 6; 
             overflow: hidden;
             text-overflow: ellipsis;
-            max-height: 150px; /* Adjust as necessary */
+            max-height: 150px; 
         }
 
         .card .badge {
             margin-right: 5px; 
-            background-color: #e0e3ff; /* Badge background color */
-            color: #353cf8; /* Badge text color */
+            background-color: #e0e3ff; 
+            color: #353cf8; 
         }
 
         .btn-outline-secondary {
             color: #6c757d; 
             border-color: #6c757d; 
             align-self: flex-start;
-            margin-top: auto; /* Push button to the bottom */
+            margin-top: auto; 
         }
 
         .btn-outline-secondary:hover {
@@ -158,7 +158,7 @@
         }
 
         .main-content {
-            overflow-y: auto; /* Enable scrolling in the main content area */
+            overflow-y: auto; 
             max-height: 100vh;
         }
     </style>
@@ -177,7 +177,6 @@
             </div>
             <div class="col-lg-8 col-md-12 main-content" id="main-content" style="margin-top: 3px;">
                 <div class="project-grid mt-6 row" id="projectGrid" style="margin-top: 8px;">
-                    <!-- Cards will be inserted here by JavaScript -->
                 </div>
             </div>
         </div>
@@ -185,7 +184,6 @@
 
     <!-- Modals -->
     <div id="modalsContainer">
-        <!-- Modals will be inserted here by JavaScript -->
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
