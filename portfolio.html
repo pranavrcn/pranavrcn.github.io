@@ -11,7 +11,7 @@
         html, body {
             height: 100%;
             margin: 0;
-            overflow-x: hidden;
+            overflow: hidden; /* Prevent scrolling on the entire webpage */
         }
 
         body {
@@ -30,6 +30,8 @@
             justify-content: center;
             text-align: center;
             box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+            position: sticky; /* Make left block sticky */
+            top: 0;
         }
 
         .left-block img {
@@ -53,18 +55,24 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
             background-color: #f8f9fa; 
             transition: transform 0.3s, box-shadow 0.3s; 
+            display: flex;
+            flex-direction: column;
             height: 100%;
         }
 
-        .card:hover {
-            transform: translateY(-10px); 
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2); 
+        .card .card-body {
+            flex: 1 1 auto;
+            display: flex;
+            flex-direction: column;
         }
 
         .card .card-title {
             color: #333333; 
             display: -webkit-box;
             -webkit-box-orient: vertical;
+            font-weight: bolder;
+            -webkit-line-clamp: 2;
+            overflow: hidden;
         }
 
         .card .card-date {
@@ -75,26 +83,29 @@
             right: 10px; 
         }
 
-        .card .card-badges {
-            margin-top: 10px; 
+        .card .card-text {
+            color: #555555; 
+            overflow-y: hidden; 
+            flex: 1 1 auto;
+            display: -webkit-box;
+            -webkit-box-orient: vertical;
+            -webkit-line-clamp: 6; /* Cap the card description to six lines */
+            overflow: hidden;
+            text-overflow: ellipsis;
+            max-height: 150px; /* Adjust as necessary */
         }
 
         .card .badge {
             margin-right: 5px; 
-        }
-
-        .card .card-text {
-            color: #555555; 
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 6;
-            overflow: hidden;
-            text-overflow: ellipsis;
+            background-color: #e0e3ff; /* Badge background color */
+            color: #353cf8; /* Badge text color */
         }
 
         .btn-outline-secondary {
             color: #6c757d; 
             border-color: #6c757d; 
+            align-self: flex-start;
+            margin-top: auto; /* Push button to the bottom */
         }
 
         .btn-outline-secondary:hover {
@@ -142,9 +153,14 @@
                 font-size: 0.875rem; 
             }
         }
+
+        .main-content {
+            overflow-y: auto; /* Enable scrolling in the main content area */
+            max-height: 100vh;
+        }
     </style>
 </head>
-<body>
+<body data-spy="scroll" data-target="#navbar" data-offset="0">
     <div class="container-fluid h-100">
         <div class="row h-100">
             <div class="col-lg-4 col-md-12 left-block">
@@ -156,73 +172,127 @@
                     <p>About Section: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
                 </div>
             </div>
-            <div class="col-lg-8 col-md-12 main-content" style = "margin-top: 10px;">
-                <div class="project-grid mt-6 row">
-                    <div class="col-md-6 col-lg-6 mb-4">
-                        <div class="card bg-light text-dark shadow">
-                            <div class="card-body">
-                                <h5 class="card-title">Refugee-Induce6d Healthcare Expenditure (Capstone)</h5>
-                                <p class="card-badges mb-2">
-                                    <span class="badge badge-primary">R</span>
-                                    <span class="badge badge-secondary">Microsoft Excel</span>
-                                </p>
-                                <p class="card-text">Utilized time series forecasting and multiple linear regression modeling to examine refugee movement's impact on healthcare expenditures across various countries. Compiled findings in a detailed report, both technical and non-technical.</p>
-                                <a href="https://github.com/your-repo/refugee-healthcare" class="btn btn-outline-secondary">View Repository</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 mb-4">
-                        <div class="card bg-light text-dark shadow">
-                            <div class="card-body">
-                                <h5 class="card-title">Financial Risk Analysis Dashboard</h5>
-                                <p class="card-badges mb-2">
-                                    <span class="badge badge-info">Power BI</span>
-                                    <span class="badge badge-dark">DAX</span>
-                                    <span class="badge badge-secondary">Power Query</span>
-                                    <span class="badge badge-primary">Python</span>
-                                    <span class="badge badge-success">APIs (Alpha Vantage)</span>
-                                </p>
-                                <p class="card-text">Developed an interactive Power BI dashboard to analyze financial risks within investment portfolios. Utilized Alpha Vantage API to integrate real-time and historical data. Implemented financial metrics to assess potential market losses. Enhanced decision-making capabilities through detailed visualizations, showcasing expertise in handling complex datasets.</p>
-                                <a href="https://github.com/your-repo/financial-risk-dashboard" class="btn btn-outline-secondary">View Repository</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 mb-4">
-                        <div class="card bg-light text-dark shadow">
-                            <div class="card-body">
-                                <h5 class="card-title">Credit Delinquency Prediction Model</h5>
-                                <p class="card-badges mb-2">
-                                    <span class="badge badge-warning">SAS</span>
-                                    <span class="badge badge-secondary">Microsoft Excel</span>
-                                </p>
-                                <p class="card-text">Compiled data from 2008 recession in order to create and cross validate a multiple linear regression model. Predicted areas most at risk to see credit delinquency rates rise during an economic downturn.</p>
-                                <a href="https://github.com/your-repo/credit-delinquency" class="btn btn-outline-secondary">View Repository</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-lg-6 mb-4">
-                        <div class="card bg-light text-dark shadow">
-                            <div class="card-body">
-                                <h5 class="card-title">CMaps</h5>
-                                <p class="card-badges mb-2">
-                                    <span class="badge badge-primary">Django</span>
-                                    <span class="badge badge-success">JavaScript</span>
-                                    <span class="badge badge-warning">CSS</span>
-                                    <span class="badge badge-secondary">HTML</span>
-                                    <span class="badge badge-dark">PostgreSQL</span>
-                                    <span class="badge badge-info">React Native</span>
-                                </p>
-                                <p class="card-text">Developed and launched a community-driven event management platform alongside a small team. Used version control (ie. GitHub and Git) heavily in order to effectively collaborate on large codebase. Published in the University of Virginia engineering newsletter, and currently has a prospective partnership with a larger company as a campus public event information vendor.</p>
-                                <a href="https://github.com/your-repo/cmaps" class="btn btn-outline-secondary">View Repository</a>
-                            </div>
-                        </div>
-                    </div>
+            <div class="col-lg-8 col-md-12 main-content" id="main-content" style="margin-top: 3px;">
+                <div class="project-grid mt-6 row" id="projectGrid" style="margin-top: 8px;">
+                    <!-- Cards will be inserted here by JavaScript -->
                 </div>
             </div>
         </div>
     </div>
+
+    <!-- Modals -->
+    <div id="modalsContainer">
+        <!-- Modals will be inserted here by JavaScript -->
+    </div>
+
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+    <script>
+        const projects = [
+            {
+                id: "project1",
+                title: "Predicting Refugee-Induced Healthcare Expenditure",
+                badges: ["R"],
+                description: "Utilized time series forecasting and multiple linear regression modeling to examine refugee movement's impact on healthcare expenditures across various countries. Compiled findings in a detailed report, both technical and non-technical.",
+                repository: "https://github.com/pranavrcn/pred-healthexp"
+            },
+            {
+                id: "project2",
+                title: "Financial Risk Analysis Dashboard",
+                badges: ["Power BI", "DAX", "Power Query", "Python", "APIs"],
+                description: "Developed an interactive Power BI dashboard to analyze financial risks within investment portfolios. Utilized Alpha Vantage API to integrate real-time and historical data. Implemented financial metrics to assess potential market losses. Enhanced decision-making capabilities through detailed visualizations, showcasing expertise in handling complex datasets.",
+                repository: "https://github.com/your-repo/financial-risk-dashboard"
+            },
+            {
+                id: "project3",
+                title: "Credit Delinquency Prediction Model",
+                badges: ["SAS", "Microsoft Excel"],
+                description: "Compiled data from 2008 recession in order to create and cross validate a multiple linear regression model. Predicted areas most at risk to see credit delinquency rates rise during an economic downturn.",
+                repository: "https://github.com/your-repo/credit-delinquency"
+            },
+            {
+                id: "project4",
+                title: "CMaps: Campus Event Management",
+                badges: ["Django", "JavaScript", "CSS", "HTML", "PostgreSQL"],
+                description: "Developed and launched a community-driven event management platform alongside a small team. Used version control (ie. GitHub and Git) heavily in order to effectively collaborate on large codebase. Published in the University of Virginia engineering newsletter, and currently has a prospective partnership with a larger company as a campus public event information vendor.",
+                repository: "https://github.com/your-repo/cmaps"
+            },
+            {
+                id: "project5",
+                title: "Automated Software Risk Assessment Using Machine Learning",
+                badges: ["Python", "SQL", "AutoML", "NLP (Natural Language Processing)"],
+                description: "Developed a dynamic system for real-time software quality assurance by evaluating individual code commits for potential future faults. This project leveraged machine learning to analyze various characteristics of code commits and developer profiles, sourced from over 60 open-source software repositories and 18,000 developer profiles on GitHub. <br><br> Key components included: Machine Learning Models (Decision Tree, Random Forest, AdaBoost, SVM), AutoML (TPOT), and Natural Language Processing. <br><br>Skills Used: Python, SQL, scikit-learn, XGBoost, TPOT, AutoML, NLP, Data Preprocessing, Machine Learning Model Evaluation. Key Tools: pandas, SQLAlchemy, Flask, joblib, spacy.",
+                repository: "https://github.com/your-repo/software-risk-assessment"
+            },
+            {
+                id: "project6",
+                title: "Customer Default Risk Prediction",
+                badges: ["R", "Microsoft Excel"],
+                description: `Developed and implemented a predictive model to assess the likelihood of customer default using logistic regression, classification trees, and random forests. Conducted comprehensive exploratory data analysis and feature engineering to identify key predictors such as work experience, credit to debt ratio, and other debts.<br><br>
+                              Achieved a balanced and accurate classification with a low false negative rate, providing valuable insights for lending institutions to mitigate risk and make informed lending decisions.`,
+                repository: "https://github.com/your-repo/customer-default-risk"
+            },
+            {
+                id: "project7",
+                title: "Customer Income Prediction Model",
+                badges: ["R"],
+                description: `Designed and evaluated multiple regression models to predict yearly customer income based on demographic and financial variables including age, work experience, education level, credit to debt ratio, and other debts.<br><br>
+                              Employed techniques such as shrinkage methods, regression trees, and random forests to enhance prediction accuracy. Identified the random forests model as the best performer with the lowest mean squared error, offering a reliable tool for banks to estimate customer income and make data-driven lending decisions.`,
+                repository: "https://github.com/your-repo/customer-income-prediction"
+            }
+        ];
+
+        function createCard(project) {
+            return `
+                <div id="${project.id}" class="col-md-6 col-lg-6 mb-4">
+                    <div class="card bg-light text-dark shadow">
+                        <div class="card-body">
+                            <h5 class="card-title">${project.title}</h5>
+                            <p class="card-badges mb-2" style="margin-top: -9px">
+                                ${project.badges.map(badge => `<span class="badge">${badge}</span>`).join('')}
+                            </p>
+                            <p class="card-text">${project.description}</p>
+                            <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#${project.id}Modal">Details</button>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function createModal(project) {
+            return `
+                <div class="modal fade" id="${project.id}Modal" tabindex="-1" role="dialog" aria-labelledby="${project.id}ModalLabel" aria-hidden="true">
+                    <div class="modal-dialog modal-lg" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="${project.id}ModalLabel">${project.title}</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                ${project.description}
+                            </div>
+                            <div class="modal-footer">
+                                <a href="${project.repository}" class="btn btn-outline-secondary">View Repository</a>
+                                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Back</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const projectGrid = document.getElementById('projectGrid');
+            const modalsContainer = document.getElementById('modalsContainer');
+
+            projects.forEach(project => {
+                projectGrid.innerHTML += createCard(project);
+                modalsContainer.innerHTML += createModal(project);
+            });
+        });
+    </script>
 </body>
 </html>
