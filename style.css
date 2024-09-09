@@ -1,0 +1,153 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    overflow: hidden; 
+}
+
+body {
+    background-color: #e0e0e0; 
+    color: #333333; 
+    font-family: 'Roboto', sans-serif;
+}
+
+.left-block {
+    background-color: white;
+    padding: 20px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    position: sticky; 
+    top: 0;
+}
+
+.left-block img {
+    border-radius: 50%;
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.left-block h2, .left-block h4, .left-block p {
+    margin-bottom: 10px;
+}
+
+.left-block .about {
+    margin-top: 20px;
+}
+
+.card {
+    border: none; 
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+    background-color: #f8f9fa; 
+    transition: transform 0.3s, box-shadow 0.3s; 
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.card .card-body {
+    flex: 1 1 auto;
+    display: flex;
+    flex-direction: column;
+}
+
+.card .card-title {
+    color: #333333; 
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    font-weight: bolder;
+    -webkit-line-clamp: 2;
+    overflow: hidden;
+}
+
+.card .card-date {
+    font-size: 0.7rem; 
+    color: #777777; 
+    position: absolute; 
+    top: 10px; 
+    right: 10px; 
+}
+
+.card .card-text {
+    color: #555555; 
+    overflow-y: hidden; 
+    flex: 1 1 auto;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 6; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-height: 150px; 
+}
+
+.card .badge {
+    margin-right: 5px; 
+    background-color: #e0e3ff; 
+    color: #353cf8; 
+}
+
+.btn-outline-secondary {
+    color: #6c757d; 
+    border-color: #6c757d; 
+    align-self: flex-start;
+    margin-top: auto; 
+}
+
+.btn-outline-secondary:hover {
+    color: #ffffff;
+    background-color: #6c757d; 
+    border-color: #6c757d; 
+}
+
+.text-secondary {
+    color: #6c757d !important; 
+}
+
+@media (max-width: 768px) {
+    html, body {
+        overflow: auto;
+    }
+    .left-block {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding-top: 20px;
+    }
+
+    .main-content {
+        margin-left: 0;
+    }
+
+    .card .card-date {
+        font-size: 0.6rem; 
+        top: 5px; 
+        right: 5px; 
+    }
+
+    .card .card-title {
+        font-size: 1.2rem; 
+    }
+
+    .card .card-text {
+        font-size: 0.875rem; 
+    }
+
+    .card .badge {
+        font-size: 0.75rem;
+    }
+
+    .btn-outline-secondary {
+        padding: 5px 10px; 
+        font-size: 0.875rem; 
+    }
+}
+
+.main-content {
+    overflow-y: auto; 
+    max-height: 100vh;
+}

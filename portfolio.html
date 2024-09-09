@@ -6,166 +6,9 @@
     <title>Portfolio</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="styles.css">
-    
-    <style>
-        html, body {
-            height: 100%;
-            margin: 0;
-            overflow: hidden; 
-        }
-
-        body {
-            background-color: #e0e0e0; 
-            color: #333333; 
-            font-family: 'Roboto', sans-serif;
-        }
-
-        .left-block {
-            background-color: white;
-            padding: 20px;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
-            position: sticky; 
-            top: 0;
-        }
-
-        .left-block img {
-            border-radius: 50%;
-            width: 150px;
-            height: 150px;
-            object-fit: cover;
-            margin-bottom: 20px;
-        }
-
-        .left-block h2, .left-block h4, .left-block p {
-            margin-bottom: 10px;
-        }
-
-        .left-block .about {
-            margin-top: 20px;
-        }
-
-        .card {
-            border: none; 
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
-            background-color: #f8f9fa; 
-            transition: transform 0.3s, box-shadow 0.3s; 
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .card .card-body {
-            flex: 1 1 auto;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .card .card-title {
-            color: #333333; 
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            font-weight: bolder;
-            -webkit-line-clamp: 2;
-            overflow: hidden;
-        }
-
-        .card .card-date {
-            font-size: 0.7rem; 
-            color: #777777; 
-            position: absolute; 
-            top: 10px; 
-            right: 10px; 
-        }
-
-        .card .card-text {
-            color: #555555; 
-            overflow-y: hidden; 
-            flex: 1 1 auto;
-            display: -webkit-box;
-            -webkit-box-orient: vertical;
-            -webkit-line-clamp: 6; 
-            overflow: hidden;
-            text-overflow: ellipsis;
-            max-height: 150px; 
-        }
-
-        .card .badge {
-            margin-right: 5px; 
-            background-color: #e0e3ff; 
-            color: #353cf8; 
-        }
-
-        .btn-outline-secondary {
-            color: #6c757d; 
-            border-color: #6c757d; 
-            align-self: flex-start;
-            margin-top: auto; 
-        }
-
-        .btn-outline-secondary:hover {
-            color: #ffffff;
-            background-color: #6c757d; 
-            border-color: #6c757d; 
-        }
-
-        .text-secondary {
-            color: #6c757d !important; 
-        }
-
-        @media (max-width: 768px) {
-            html, body {
-                overflow: auto;
-            }
-            .left-block {
-                width: 100%;
-                height: auto;
-                position: relative;
-                padding-top: 20px;
-            }
-
-            .main-content {
-                margin-left: 0;
-            }
-
-            .card .card-date {
-                font-size: 0.6rem; 
-                top: 5px; 
-                right: 5px; 
-            }
-
-            .card .card-title {
-                font-size: 1.2rem; 
-            }
-
-            .card .card-text {
-                font-size: 0.875rem; 
-            }
-
-            .card .badge {
-                font-size: 0.75rem;
-            }
-
-            .btn-outline-secondary {
-                padding: 5px 10px; 
-                font-size: 0.875rem; 
-            }
-        }
-
-        .main-content {
-            overflow-y: auto; 
-            max-height: 100vh;
-        }
-
-        
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body data-spy="scroll" data-target="#navbar" data-offset="0">
     <div class="container-fluid h-100">
         <div class="row h-100">
@@ -173,28 +16,18 @@
                 <div class="input-group mb-3">
                     <input type="text" id="searchInput" class="form-control" placeholder="Search Title or Programming Language" aria-label="Search Projects">
                 </div>
-                
-                <div class="input-group mb-3">
-                    <select class="form-control" id="languageFilter">
-                        <option value="">All Programming Languages</option>
-                    </select>
-                </div>
-
                 <div class="project-grid mt-6 row" id="projectGrid" style="margin-top: 8px;">
                 </div>
             </div>
         </div>
     </div>
 
-    <iframe title="analytics_performance (3)" width="600" height="373.5" src="https://app.powerbi.com/view?r=eyJrIjoiOTEwNTM0ZWItZmY4Zi00NzU1LTgxMDUtMWJjMjI3ODhhNWQ2IiwidCI6IjdiMzQ4MGM3LTM3MDctNDg3My04Yjc3LWUyMTY3MzNhNjVhYyIsImMiOjF9" frameborder="0" allowFullScreen="true"></iframe>
     <!-- Modals -->
     <div id="modalsContainer">
     </div>
-
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script src="/powerbi-client/dist/powerbi.js"></script>
     <script>
 
 
@@ -206,8 +39,8 @@
 
     // Function to display projects
     function displayProjects(filteredProjects) {
-        projectGrid.innerHTML = ''; // Clear the grid
-        modalsContainer.innerHTML = ''; // Clear the modals
+        projectGrid.innerHTML = ''; 
+        modalsContainer.innerHTML = ''; 
         filteredProjects.forEach(project => {
             projectGrid.innerHTML += createCard(project);
             modalsContainer.innerHTML += createModal(project);
@@ -217,21 +50,26 @@
     // Initially display all projects
     displayProjects(projects);
 
-    // Search function to filter projects by title and badges
     function searchProjects(query) {
-        const filteredProjects = projects.filter(project => {
-            // Check if query matches the project title
-            const titleMatch = project.title.toLowerCase().includes(query.toLowerCase());
-            
-            // Check if query matches any of the badges
-            const badgesMatch = project.badges.some(badge => badge.toLowerCase().includes(query.toLowerCase()));
-
-            // Return true if either the title or badges match the query
-            return titleMatch || badgesMatch;
-        });
-        
-        displayProjects(filteredProjects);
+    if (query === '') {
+        // If query is empty, display all projects
+        displayProjects(projects);
+        return;
     }
+    const filteredProjects = projects.filter(project => {
+        
+        // Check if query matches the project title
+        const titleMatch = project.title.toLowerCase().includes(query.toLowerCase());
+
+        // Check if query matches any of the badges
+        const badgesMatch = project.badges.some(badge => badge.toLowerCase().includes(query.toLowerCase()));
+
+        // Return true if either the title or badges match the query
+        return titleMatch || badgesMatch;
+    });
+
+    displayProjects(filteredProjects);
+}
 
     // Event listener for real-time search input
     searchInput.addEventListener('input', (e) => {
@@ -289,70 +127,6 @@
     }
 ];
 
-document.addEventListener('DOMContentLoaded', () => {
-            const projectGrid = document.getElementById('projectGrid');
-            const modalsContainer = document.getElementById('modalsContainer');
-            const searchInput = document.getElementById('searchInput');
-            const languageFilter = document.getElementById('languageFilter');
-
-            // Function to extract only programming languages from the badges
-            const programmingLanguages = ["Python", "SQL", "Django", "JavaScript", "CSS", "HTML", "R", "SAS"];
-
-            // Populate the dropdown with programming languages
-            programmingLanguages.forEach(language => {
-                const option = document.createElement('option');
-                option.value = language;
-                option.textContent = language;
-                languageFilter.appendChild(option);
-            });
-
-            // Function to display projects
-            function displayProjects(filteredProjects) {
-                projectGrid.innerHTML = ''; // Clear the grid
-                modalsContainer.innerHTML = ''; // Clear the modals
-                filteredProjects.forEach(project => {
-                    projectGrid.innerHTML += createCard(project);
-                    modalsContainer.innerHTML += createModal(project);
-                });
-            }
-
-            // Initially display all projects
-            displayProjects(projects);
-
-            // Search function to filter projects by title or badges
-            function searchProjects(query) {
-                const filteredProjects = projects.filter(project => {
-                    const titleMatch = project.title.toLowerCase().includes(query.toLowerCase());
-                    const badgesMatch = project.badges.some(badge => badge.toLowerCase().includes(query.toLowerCase()));
-                    return titleMatch || badgesMatch;
-                });
-                displayProjects(filteredProjects);
-            }
-
-            // Filter projects by programming language from dropdown
-            function filterByLanguage(language) {
-                const filteredProjects = projects.filter(project => project.badges.includes(language));
-                displayProjects(filteredProjects);
-            }
-
-            // Event listener for search input
-            searchInput.addEventListener('input', (e) => {
-                const query = e.target.value;
-                searchProjects(query);
-            });
-
-            // Event listener for language filter dropdown
-            languageFilter.addEventListener('change', (e) => {
-                const selectedLanguage = e.target.value;
-                if (selectedLanguage === "") {
-                    displayProjects(projects); // Show all projects if no filter is selected
-                } else {
-                    filterByLanguage(selectedLanguage);
-                }
-            });
-        });
-        
-
         function createCard(project) {
             return `
                 <div id="${project.id}" class="col-md-6 col-lg-6 mb-4">
@@ -394,15 +168,7 @@ document.addEventListener('DOMContentLoaded', () => {
             `;
         }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const projectGrid = document.getElementById('projectGrid');
-            const modalsContainer = document.getElementById('modalsContainer');
-
-            projects.forEach(project => {
-                projectGrid.innerHTML += createCard(project);
-                modalsContainer.innerHTML += createModal(project);
-            });
-        });
+        
     </script>
 </body>
 </html>
