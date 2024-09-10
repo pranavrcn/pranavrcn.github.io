@@ -14,7 +14,7 @@
         <div class="row h-100">
             <div class="col-lg-12 col-md-12 main-content" id="main-content" style="margin-top: 10px;">
                 <div class="input-group mb-3">
-                    <input type="text" id="searchInput" class="form-control" placeholder="Search Title or Programming Language" aria-label="Search Projects">
+                    <input type="text" id="searchInput" class="form-control" placeholder="Search by Title, Technology, or Language" aria-label="Search Projects">
                 </div>
                 <div class="project-grid mt-6 row" id="projectGrid" style="margin-top: 8px;">
                 </div>
@@ -28,147 +28,7 @@
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    <script>
+    <script src="script.js"></script>
 
-
-        // Search
-        document.addEventListener('DOMContentLoaded', () => {
-    const projectGrid = document.getElementById('projectGrid');
-    const modalsContainer = document.getElementById('modalsContainer');
-    const searchInput = document.getElementById('searchInput');
-
-    // Function to display projects
-    function displayProjects(filteredProjects) {
-        projectGrid.innerHTML = ''; 
-        modalsContainer.innerHTML = ''; 
-        filteredProjects.forEach(project => {
-            projectGrid.innerHTML += createCard(project);
-            modalsContainer.innerHTML += createModal(project);
-        });
-    }
-
-    // Initially display all projects
-    displayProjects(projects);
-
-    function searchProjects(query) {
-    if (query === '') {
-        // If query is empty, display all projects
-        displayProjects(projects);
-        return;
-    }
-    const filteredProjects = projects.filter(project => {
-        
-        // Check if query matches the project title
-        const titleMatch = project.title.toLowerCase().includes(query.toLowerCase());
-
-        // Check if query matches any of the badges
-        const badgesMatch = project.badges.some(badge => badge.toLowerCase().includes(query.toLowerCase()));
-
-        // Return true if either the title or badges match the query
-        return titleMatch || badgesMatch;
-    });
-
-    displayProjects(filteredProjects);
-}
-
-    // Event listener for real-time search input
-    searchInput.addEventListener('input', (e) => {
-        const query = e.target.value;
-        searchProjects(query);
-    });
-});
-
-
-// Project loading
-        const projects = [
-    {
-        id: "project1",
-        title: "Automated Software Risk Assessment",
-        badges: ["Python", "SQL", "AutoML", "NLP (Natural Language Processing)"],
-        description: "Developed a dynamic system for real-time software quality assurance by evaluating individual code commits for potential future faults. This project leveraged machine learning to analyze various characteristics of code commits and developer profiles, sourced from over 60 open-source software repositories and 18,000 developer profiles on GitHub. <br><br> Key components included: Machine Learning Models (Decision Tree, Random Forest, AdaBoost, SVM), AutoML (TPOT), and Natural Language Processing. <br><br>Skills Used: Python, SQL, scikit-learn, XGBoost, TPOT, AutoML, NLP, Data Preprocessing, Machine Learning Model Evaluation. Key Tools: pandas, SQLAlchemy, Flask, joblib, spacy.",
-        repository: "https://github.com/pranavrcn/software-risk"
-    },
-    // {
-    //     id: "project2",
-    //     title: "Financial Risk Analysis Dashboard",
-    //     badges: ["Power BI", "DAX", "Power Query", "Python", "APIs"],
-    //     description: "Developed an interactive Power BI dashboard to analyze financial risks within investment portfolios. Utilized Alpha Vantage API to integrate real-time and historical data. Implemented financial metrics to assess potential market losses. Enhanced decision-making capabilities through detailed visualizations, showcasing expertise in handling complex datasets.",
-    //     repository: "https://github.com/your-repo/financial-risk-dashboard"
-    // },
-    {
-        id: "project3",
-        title: "CMaps: Campus Event Management",
-        badges: ["Django", "JavaScript", "CSS", "HTML", "PostgreSQL"],
-        description: "Developed and launched a community-driven event management platform alongside a small team. Used version control (ie. GitHub and Git) heavily in order to effectively collaborate on large codebase. Published in the University of Virginia engineering newsletter, and currently has a prospective partnership with a larger company as a campus public event information vendor.",
-        repository: "https://github.com/pranavrcn/cmaps"
-    },
-    {
-        id: "project4",
-        title: "Predicting Refugee-Induced Healthcare Expenditure",
-        badges: ["R"],
-        description: "Utilized time series forecasting and multiple linear regression modeling to examine refugee movement's impact on healthcare expenditures across various countries. Compiled findings in a detailed report, both technical and non-technical.",
-        repository: "https://github.com/pranavrcn/pred-healthexp"
-    },
-    {
-        id: "project5",
-        title: "Customer Default Risk and Income Prediction",
-        badges: ["R"],
-        description: `Developed predictive models to assess the likelihood of customer default and predict yearly customer income. The default risk model used logistic regression, classification trees, and random forests, with comprehensive exploratory data analysis and feature engineering to identify key predictors such as work experience, credit to debt ratio, and other debts. It achieved a balanced and accurate classification with a low false negative rate.<br><br>
-                      The income prediction model employed techniques such as shrinkage methods, regression trees, and random forests, identifying the random forests model as the best performer with the lowest mean squared error. This project provided valuable tools for lending institutions to mitigate risk and make informed lending decisions based on customer income estimates.<br><br>
-                      Skills Used: Logistic Regression, Classification Trees, Random Forests, Regression Models, Shrinkage Methods.<br>`,
-        repository: "https://github.com/pranavrcn/pred-definc"
-    },
-    {
-        id: "project6",
-        title: "Credit Delinquency Prediction Model",
-        badges: ["SAS", "Microsoft Excel"],
-        description: "Compiled data from 2008 recession in order to create and cross validate a multiple linear regression model. Predicted areas most at risk to see credit delinquency rates rise during an economic downturn.",
-        repository: "https://github.com/pranavrcn/cred-del"
-    }
-];
-
-        function createCard(project) {
-            return `
-                <div id="${project.id}" class="col-md-6 col-lg-6 mb-4">
-                    <div class="card bg-light text-dark shadow">
-                        <div class="card-body">
-                            <h5 class="card-title">${project.title}</h5>
-                            <p class="card-badges mb-2" style="margin-top: -9px">
-                                ${project.badges.map(badge => `<span class="badge">${badge}</span>`).join('')}
-                            </p>
-                            <p class="card-text">${project.description}</p>
-                            <button type="button" class="btn btn-outline-secondary" data-toggle="modal" data-target="#${project.id}Modal">Details</button>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        function createModal(project) {
-            return `
-                <div class="modal fade" id="${project.id}Modal" tabindex="-1" role="dialog" aria-labelledby="${project.id}ModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-lg" role="document">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="${project.id}ModalLabel">${project.title}</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                ${project.description}
-                            </div>
-                            <div class="modal-footer">
-                                <a href="${project.repository}" class="btn btn-outline-secondary">View Repository</a>
-                                <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Back</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            `;
-        }
-
-        
-    </script>
 </body>
 </html>
