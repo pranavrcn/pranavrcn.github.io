@@ -37,16 +37,16 @@ const projects = [
         title: "Analyzing E-commerce Performance: A Report on Sales, Quantity, and Profitability",
         badges: ["Power BI"],
         description: "",
-        repository: "",
+        repository: "/ecom-performancereport.html",
         image: "images/ecomreport.png" // Add image URL
     },
     {
         id: "project2",
-        title: "Quantifying Highway Use Externalities: A Cost-Benefit Analysis of Noise, Pollution, Crashes, and Congestion Using ECAT Data",
+        title: "Quantifying Highway Use Externalities: A Cost-Benefit Analysis of Noise, Pollution, Crashes, and Congestion",
         badges: ["Power BI"],
         description: "",
-        repository: "",
-        image: "https://example.com/highway-use-analysis.jpg" // Add image URL
+        repository: "/costbenefit-highways.html",
+        image: "images/costbenreport.png" // Add image URL
     }
 ];
 
@@ -85,7 +85,7 @@ function createCard(project) {
                                 ${project.description}
                             </div>
                             <div class="modal-footer">
-                                <a href="${project.repository}" class="btn btn-outline-secondary">View Repository</a>
+                                <a href="${project.repository}" class="btn btn-outline-secondary">View Report</a>
                                 <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Back</button>
                             </div>
                         </div>
