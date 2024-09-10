@@ -66,7 +66,7 @@ const projects = [
     {
         id: "project3",
         title: "CMaps: Campus Event Management",
-        badges: ["Python", "JavaScript", "Postgres", "Heroku"],
+        badges: ["Python", "PostgreSQL", "JavaScript", "HTML", "CSS", "Heroku"],
         description: "Co-developed and deployed a collaborative event management platform for university campuses, enabling users to create, manage, and promote events. The project employed Django for backend logic, PostgreSQL for database management, and JavaScript for frontend development. Showcased in the University of Virginia engineering newsletter.",
         repository: ""
     },
