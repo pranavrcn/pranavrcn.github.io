@@ -1,11 +1,8 @@
         
-        // Search
-        document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
     const projectGrid = document.getElementById('projectGrid');
     const modalsContainer = document.getElementById('modalsContainer');
     const searchInput = document.getElementById('searchInput');
-
-    // Function to display projects
     function displayProjects(filteredProjects) {
         projectGrid.innerHTML = ''; 
         modalsContainer.innerHTML = ''; 
@@ -14,40 +11,26 @@
             modalsContainer.innerHTML += createModal(project);
         });
     }
-
-    // Initially display all projects
     displayProjects(projects);
-
     function searchProjects(query) {
     if (query === '') {
-        // If query is empty, display all projects
         displayProjects(projects);
         return;
     }
     const filteredProjects = projects.filter(project => {
-        
-        // Check if query matches the project title
         const titleMatch = project.title.toLowerCase().includes(query.toLowerCase());
-
-        // Check if query matches any of the badges
         const badgesMatch = project.badges.some(badge => badge.toLowerCase().includes(query.toLowerCase()));
-
-        // Return true if either the title or badges match the query
         return titleMatch || badgesMatch;
     });
-
     displayProjects(filteredProjects);
 }
 
-    // Event listener for real-time search input
     searchInput.addEventListener('input', (e) => {
         const query = e.target.value;
         searchProjects(query);
     });
 });
 
-
-// Project loading
 const projects = [
     {
         id: "project1",
